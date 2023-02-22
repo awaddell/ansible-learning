@@ -30,3 +30,6 @@ jobs:
 
       - name: Output Ansible version
         run: ansible --version
+
+      - name: Install nginx Ansible Galaxy Collection
+        run: ansible-galaxy collection install nginxinc.nginx_core:0.7.1
