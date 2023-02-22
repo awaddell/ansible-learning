@@ -1,0 +1,5 @@
+---
+collections:
+  - name: nginxinc.nginx_core
+    version: 0.8.0
+

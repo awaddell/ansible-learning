@@ -35,5 +35,13 @@ jobs:
       - name: Output Ansible version
         run: ansible --version
 
-      - name: Install nginx Ansible Galaxy Collection
-        run: ansible-galaxy collection install nginxinc.nginx_core:0.7.1
+      - name: Install nginx from Ansible Galaxy Collection
+        run: ansible-galaxy collection install -r requirements.yaml
+
+  ansible-playbook:
+    needs: install-ansible
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Ansible playbook
+        run: ansible-playbook -i inventory.yaml playbook.yaml
