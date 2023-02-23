@@ -29,8 +29,9 @@ jobs:
       - name: Upgrade Ubuntu
         run: sudo apt-get update && sudo apt-get upgrade -y
 
-      - name: Install Ansible Core
-        run: sudo apt-get install -y ansible-core
+      # Using ansible package and not ansible-core for the same reason as above
+      - name: Install Ansible
+        run: sudo apt-get install -y ansible
 
       - name: Output Ansible version
         run: ansible --version
@@ -38,7 +39,7 @@ jobs:
       - name: Install nginx from Ansible Galaxy Collection
         run: ansible-galaxy collection install -r requirements.yaml
 
-  ansible-playbook:
+  run-ansible-playbook:
     needs: install-ansible
     runs-on: ubuntu-latest
     steps:
